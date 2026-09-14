@@ -58,13 +58,13 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'log_request_id.middleware.RequestIDMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = 'api.urls'
@@ -100,6 +100,14 @@ WSGI_APPLICATION = 'api.wsgi.application'
 DATABASES = {
     'default': dj_database_url.parse(config('DATABASE_URL'))
 }
+
+STORAGES = {
+    # ...
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
+
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
 
@@ -224,3 +232,13 @@ LOGGING = {
 }
 
 logging.config.dictConfig(LOGGING)
+
+EMAI_FROM_USER = config('Email_FROM_USER')
+EMAIL_TO_USER = config('EMAIL_TO_USER')
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBAckend'
+EMAIL_HOST = 'smtp.gmail.com'
+SERVER_EMAIL = config('EMAIL_HOST_USER')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True

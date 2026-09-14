@@ -233,12 +233,12 @@ LOGGING = {
 
 logging.config.dictConfig(LOGGING)
 
-EMAI_FROM_USER = config('Email_FROM_USER')
-EMAIL_TO_USER = config('EMAIL_TO_USER')
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBAckend'
-EMAIL_HOST = 'smtp.gmail.com'
-SERVER_EMAIL = config('EMAIL_HOST_USER')
-EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
+# EMAI_FROM_USER = config('Email_FROM_USER')
+# EMAIL_TO_USER = config('EMAIL_TO_USER')
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBAckend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# SERVER_EMAIL = config('EMAIL_HOST_USER')
+# EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+# EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True

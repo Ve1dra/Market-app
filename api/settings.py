@@ -234,9 +234,9 @@ LOGGING = {
 
 logging.config.dictConfig(LOGGING)
 
-EMAI_FROM_USER = config('EMAIL_FROM_USER')
-EMAIL_TO_USER = config('EMAIL_TO_USER')
-SERVER_EMAIL = config('EMAIL_HOST_USER')
+# EMAIL_FROM_USER = config('EMAIL_FROM_USER')
+# EMAIL_TO_USER = config('EMAIL_TO_USER')
+# SERVER_EMAIL = config('EMAIL_HOST_USER')
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'mail.fog-agric.com'

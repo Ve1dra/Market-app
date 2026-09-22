@@ -1,6 +1,8 @@
 from django.contrib.auth import authenticate
 from rest_framework import generics
 from rest_framework.response import Response
+from utils.email import Email
+from utils.logger import logger
 
 from .models import User
 from .serializers import LoginSerializer, SignupSerializer
@@ -50,6 +52,11 @@ class SignUpView(generics.GenericAPIView):
             )
             user.set_password(password)
             user.save()
+            try:
+                Email.welcome_email(user.email)
+                logger.info("Email sent successfully!")
+            except BaseException as e:
+                logger.error("Email sending failed:", e)
         return Response(data={"message": "Success"}, status=201)
 
 

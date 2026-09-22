@@ -32,7 +32,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['market-app-xa3g.onrender.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -153,7 +153,7 @@ AUTH_USER_MODEL = "authentication.User"
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ),
+        ),
     'DEFAULT_PAGINATION_CLASS': 'utils.pagination.CustomPagination',
     'PAGE_SIZE': 10,
     # 'NON_FIELD_ERRORS_KEY': 'error',
@@ -236,10 +236,11 @@ logging.config.dictConfig(LOGGING)
 
 # EMAI_FROM_USER = config('Email_FROM_USER')
 # EMAIL_TO_USER = config('EMAIL_TO_USER')
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBAckend'
-# EMAIL_HOST = 'smtp.gmail.com'
 # SERVER_EMAIL = config('EMAIL_HOST_USER')
-# EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-# EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
-# EMAIL_PORT = 587
-# EMAIL_USE_TLS = True
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'mail.fog-agric.com'
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True

@@ -23,11 +23,11 @@ class ProductView(generics.GenericAPIView):
         return Response(data=serializer.data, status=201)
 
     def get_queryset(self):
-            search = self.request.query_params.get("search", None)
-            all_products = Products.objects.all()
-            if search:
-                all_products = all_products.filter(Q(name__icontains=search) | Q(description__icontains=search))
-            return all_products
+        search = self.request.query_params.get("search", None)
+        all_products = Products.objects.all()
+        if search:
+            all_products = all_products.filter(Q(name__icontains=search) | Q(description__icontains=search))
+        return all_products
     
     @swagger_auto_schema(
             manual_parameters=[
